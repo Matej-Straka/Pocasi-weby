@@ -25,13 +25,12 @@ class Main extends BaseController
     {
         $bundesland = $this->bundesland->findall();
         $data['bundesland'] = $bundesland;
-        $data['cesta'] = $this->config->obrazky;
         echo view('index', $data);
     }
     public function getZeme($idZeme)
     {
         $data['stanice'] = $this->station->where('bundesland', $idZeme)->findAll();
-        $data['zeme'] = $this->bundesland->find($idZeme)->name;
+        $data['zeme'] = $this->bundesland->find($idZeme);
         echo view('zeme', $data);
     }
     public function getStanice($idStanice)
@@ -39,5 +38,16 @@ class Main extends BaseController
         $data['mereni'] = $this->data_m->where('Stations_ID', $idStanice)->findAll();
         $data['stanice'] = $this->station->find($idStanice)->place;
         echo view('stanice', $data);
+    }
+    public function getZemeInf($idZeme)
+    {
+        $data['zeme'] = $this->bundesland->find($idZeme);
+        $data['cesta'] = $this->config->obrazky;
+        echo view('zeme_inf', $data);
+    }
+    public function stanice(){
+        $data['stanice'] = $this->station->join('bundesland', 'station.bundesland = bundesland.id', 'inner' )->findAll();
+        $data['cesta'] = $this->config->obrazky;
+        echo view('prehledStanic', $data);        
     }
 }

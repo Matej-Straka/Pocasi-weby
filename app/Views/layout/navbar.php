@@ -16,24 +16,13 @@
             <li class="nav-item">
             <?php
                              $anchorProperties = [
-                              'title' => 'Polští Hráči',
+                              'title' => 'Země',
                               'class' => 'nav-link'
                              ];
 
-                            echo anchor('hraci', 'Polští Hráči', $anchorProperties);
+                            echo anchor('stanice', 'Stanice', $anchorProperties);
                       ?>
-            </li>
-            <li class="nav-item">
-            <?php
-                             $anchorProperties = [
-                              'title' => 'Karty Hračů',
-                              'class' => 'nav-link'
-                             ];
-
-                            echo anchor('kartyHraci', 'Karty Hráčů', $anchorProperties);
-                      ?>
-            </li>
-                    
+            </li>                     
         </ul>
       </div>
       <div class="navbar-collapse collapse-horizontal order-3 dual-collapse2">
